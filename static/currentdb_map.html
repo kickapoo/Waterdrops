@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<head>
+   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+   <script src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+   
+   
+   
+   
+
+
+<style>
+
+#map {
+  position:absolute;
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+}
+
+</style>
+</head>
+<body>
+
+        <div id="map" style="width: 960px; height: 500px"></div>
+
+<script>
+
+
+
+var map = L.map('map').setView([35, 35], 5);
+
+L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: 'Map data (c) <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+
+var circle_1 = L.circle([39.1554, 25.9445], 500, {
+                            color: 'black',
+                            fillColor: 'red',
+                            fillOpacity: 0.6
+                            });
+circle_1.bindPopup("Basin Name: Xalantra");
+map.addLayer(circle_1)
+
+var circle_2 = L.circle([39.1554, 25.9255], 500, {
+                            color: 'black',
+                            fillColor: 'red',
+                            fillOpacity: 0.6
+                            });
+circle_2.bindPopup("Basin Name: Lifonakas");
+map.addLayer(circle_2)
+
+var circle_3 = L.circle([39.1769, 25.941], 500, {
+                            color: 'black',
+                            fillColor: 'red',
+                            fillOpacity: 0.6
+                            });
+circle_3.bindPopup("Basin Name: Karasaris");
+map.addLayer(circle_3)
+
+var circle_4 = L.circle([39.1814, 25.9676], 500, {
+                            color: 'black',
+                            fillColor: 'red',
+                            fillOpacity: 0.6
+                            });
+circle_4.bindPopup("Basin Name: Xalantra - Dam");
+map.addLayer(circle_4)
+
+var circle_5 = L.circle([39.1584, 25.9676], 500, {
+                            color: 'black',
+                            fillColor: 'red',
+                            fillOpacity: 0.6
+                            });
+circle_5.bindPopup("Basin Name: Eleousa");
+map.addLayer(circle_5)
+
+var circle_6 = L.circle([37.0597, 22.2439], 500, {
+                            color: 'black',
+                            fillColor: 'red',
+                            fillOpacity: 0.6
+                            });
+circle_6.bindPopup("Basin Name: Karbeliotis");
+map.addLayer(circle_6)
+
+var circle_7 = L.circle([37.1343, 22.2249], 500, {
+                            color: 'black',
+                            fillColor: 'red',
+                            fillOpacity: 0.6
+                            });
+circle_7.bindPopup("Basin Name: Nedousa");
+map.addLayer(circle_7)
+
+var circle_8 = L.circle([37.0967, 22.2548], 500, {
+                            color: 'black',
+                            fillColor: 'red',
+                            fillOpacity: 0.6
+                            });
+circle_8.bindPopup("Basin Name: Alagonia");
+map.addLayer(circle_8)
+
+var circle_9 = L.circle([37.0963, 22.1711], 500, {
+                            color: 'black',
+                            fillColor: 'red',
+                            fillOpacity: 0.6
+                            });
+circle_9.bindPopup("Basin Name: Bakas (Nedontas)");
+map.addLayer(circle_9)
+
+var circle_10 = L.circle([37.0, 22.0], 500, {
+                            color: 'black',
+                            fillColor: 'red',
+                            fillOpacity: 0.6
+                            });
+circle_10.bindPopup("Basin Name: add Basin name");
+map.addLayer(circle_10)
+
+var circle_11 = L.circle([37.10674, 22.2244], 500, {
+                            color: 'black',
+                            fillColor: '#3186cc',
+                            fillOpacity: 0.6
+                            });
+circle_11.bindPopup("Station Name: Alagonia");
+map.addLayer(circle_11)
+
+var circle_12 = L.circle([37.15532, 22.04398], 500, {
+                            color: 'black',
+                            fillColor: '#3186cc',
+                            fillOpacity: 0.6
+                            });
+circle_12.bindPopup("Station Name: Alagonia Rentifis");
+map.addLayer(circle_12)
+
+var circle_13 = L.circle([37.06251, 22.12798], 500, {
+                            color: 'black',
+                            fillColor: '#3186cc',
+                            fillOpacity: 0.6
+                            });
+circle_13.bindPopup("Station Name: Bakas Kalamata");
+map.addLayer(circle_13)
+
+var circle_14 = L.circle([37.0333, 22.1071], 500, {
+                            color: 'black',
+                            fillColor: '#3186cc',
+                            fillOpacity: 0.6
+                            });
+circle_14.bindPopup("Station Name: Nisaki Kalamata");
+map.addLayer(circle_14)
+
+var circle_15 = L.circle([37.15532, 22.04398], 500, {
+                            color: 'black',
+                            fillColor: '#3186cc',
+                            fillOpacity: 0.6
+                            });
+circle_15.bindPopup("Station Name: Arfara");
+map.addLayer(circle_15)
+
+var circle_16 = L.circle([37.07342, 22.2361], 500, {
+                            color: 'black',
+                            fillColor: '#3186cc',
+                            fillOpacity: 0.6
+                            });
+circle_16.bindPopup("Station Name: Karbeliotis");
+map.addLayer(circle_16)
+
+var circle_17 = L.circle([37.14324, 22.23297], 500, {
+                            color: 'black',
+                            fillColor: '#3186cc',
+                            fillOpacity: 0.6
+                            });
+circle_17.bindPopup("Station Name: Nedousa");
+map.addLayer(circle_17)
+
+var circle_18 = L.circle([39.13, 25.92], 500, {
+                            color: 'black',
+                            fillColor: '#3186cc',
+                            fillOpacity: 0.6
+                            });
+circle_18.bindPopup("Station Name: ISLA Eressos");
+map.addLayer(circle_18)
+
+var circle_19 = L.circle([37.06623, 22.26609], 500, {
+                            color: 'black',
+                            fillColor: '#3186cc',
+                            fillOpacity: 0.6
+                            });
+circle_19.bindPopup("Station Name: Taygetos");
+map.addLayer(circle_19)
+
+var circle_20 = L.circle([37.1576, 22.13976], 500, {
+                            color: 'black',
+                            fillColor: '#3186cc',
+                            fillOpacity: 0.6
+                            });
+circle_20.bindPopup("Station Name: Poliani");
+map.addLayer(circle_20)
+
+var circle_21 = L.circle([37.0, 22.23], 500, {
+                            color: 'black',
+                            fillColor: '#3186cc',
+                            fillOpacity: 0.6
+                            });
+circle_21.bindPopup("Station Name: add Station Name");
+map.addLayer(circle_21)
+
+
+
+
+
+
+</script>
+
+</body>

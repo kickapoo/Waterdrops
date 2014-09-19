@@ -1,0 +1,42 @@
+{{extend 'layout.html'}}
+
+<h5> All Comments</h5>
+<hr>
+{{for post in comments:}}
+		<div class="post">
+			<div class="">
+			  <em>On {{=post.created_on}} {{= post.created_by.last_name}} says:</em>
+			</div>
+			<div class="">
+		 	  {{=post.body}}
+		 	</div>
+		</div>
+		<hr>
+{{pass}}
+{{=form}}
+<div class="container">
+	<div class="row">
+			<div class="panel-body">
+					<sub>
+						[{{=A('Find Your WGS84 Decimal Degrees',_href="http://pos-map.appspot.com/el/coordinates10.html",_target="blank")}}]
+					</sub>
+					<div class="video-container">
+                  			<iframe src= "{{=URL('static','profile_map.html')}}"></iframe>
+	              	</div>
+<!-- Map - Legend -->
+	              	  <sub>
+						<strong>Map Starts </strong> {{=default_center}} (WGS84 Decimal Degrees) 
+						<br>
+						<strong>Basins: </strong> 
+						<font size="0.4" color="red"> Red </font> 
+						<strong>Stations :</strong> 
+						<font size="0.4" color="blue">Blue</font>		
+					 </sub>
+				</div>
+			</div>
+	</div>
+</div>
+
+
+
+

@@ -1,0 +1,82 @@
+{{extend 'layout.html'}}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+<!-- Basin Name -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					 <strong> {{=name}} </strong>
+				</div>
+			</div>
+<!-- Input Data -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					 <strong> Input Data </strong>
+				</div>
+				<div class="panel-body">
+						<strong>Area:</strong> {{=A}} km <sup>2</sup>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>Analysis Description</strong>
+				</div>
+				<div class="panel-heading">
+					 <strong>Q = f(area) </strong>
+				</div>
+				<div class="panel-body">
+<!-- Text  -->
+					<p class ="text-justify">The simpliest Rainfall - Runoff model has published in 1851 by Thomas James Mulvaney using a single simple equation : Q<sub>p</sub> = C*A*R and is known widely as "rational method" (where, C:empirical coeffient, A: catchment area, R: rainfall intensity). It is most common, hydrologist's during their first hydrological investigation of a catchment are dealing with limited data. Therefore varius simple Rainfall-Runoff empirical models exist using as one parameter the catchment area and estimate Qpeak or Qmax.(soon more Detailed Text)
+					</p>
+					<p>Waterdrops uses:
+						<ul>
+						 <li>Friedrich = 24.12 * A<sup>0.516</sup>, </li>
+						 <li>Klement-Wunderlich = 5.5 * A <sup>5/6</sup> ,</li>
+						 <li>Wundt = 13.8 * A<sup>0.6</sup>,</li>
+						 <li>Valentini = (30 / A<sup>1/2</sup>)* A, where A is catchment area.</li>
+						</ul>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Results -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>Results</strong>
+				</div>
+				<div class="panel-body">
+<!-- Table Results -->
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+								  <th>Friedrich (m<sup>3</sup>/sec,km<sup>2</sup>)</th>
+								  <th>Klement -Wunderlich (m<sup>3</sup>/sec,km<sup>2</sup>) </th>		
+								  <th>Wudnt (m<sup>3</sup>/sec,km<sup>2</sup>)</th>
+								  <th> Valentini (m<sup>3</sup>/sec,km<sup>2</sup>)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+								  <td>{{=round(q1,2)}}</td>
+								  <td>{{=round(q2,2)}}</td>
+								  <td>{{=round(q3,2)}}</td>
+								  <td>{{=round(q4,2)}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>		
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

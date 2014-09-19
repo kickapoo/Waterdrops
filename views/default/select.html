@@ -1,0 +1,63 @@
+{{extend 'layout.html'}}
+<div class ="row">
+	<br>
+	<div class="col-md-4">
+	        	<div class="panel panel-default">
+	        		<br>
+		          	<div class="panel-heading"> <strong>Waterdrops Current Basins & Stations Database </strong></div>
+		          	<div class="panel-body">
+			              <div class="video-container">
+			                  <iframe src= "{{=URL('static','currentdb_map.html')}}"></iframe>
+			             </div>		
+			              <div class="alert alert-success text-center" style="font-size:8px;" role ="alert">
+			              	<sup>
+			                   				   <span class ="badge" style='font-size:8px'>{{=map['num_waterdrops']}} </span>
+			                      Waterdrops <span class ="badge" style='font-size:8px'>{{=map['num_basins']}}</span>
+			                      Catchments <span class ="badge" style='font-size:8px'>{{=map['num_stations']}}</span> 
+			                      Station   <span class ="badge" style='font-size:8px'>{{=map['num_sensors']}}</span> 
+			                      Sensors 
+			                 </sup>
+			              </div>
+		              	  <div>
+			               <p class= "text-justify>" style="font-size:8px;">If you have problems with map display: Click here
+			               <a href="https://cdn.leafletjs.com/leaflet-0.5/leaflet.css" target ="_blank">Map Certificate</a> 
+			               to accepted certificate and reload Waterdrop page OR view 
+			               <a href="http://www.youtube.com/embed/8_cEB6XoTC0" target ="blank">Map Display Problems video</a>. 
+			               Prototype Datasets Licence : [<a href="http://www.mar.aegean.gr/isla/index.php?" target="_blank">THALIS - Research Programme ISLA</a>] [<a href="http://openmeteo.org" target="_blank">openmeteo.org </a>]</p>
+			          	  </div>
+			        </div>
+		       </div>
+	</div>
+	 <div class="col-md-8">
+			{{if waterdrops:}}
+			<div class="table-responsive">
+						<table class="table table-hover">
+							<thead style="background:;">
+									<tr>
+									  <th> Waterdrop Name</th>
+									  <th> # of Catchments</th>
+									  <th> # of Stations </th>
+									  <th> # of Sensors</th>
+									  <th> Created on</th>
+									</tr>
+									{{for waterdrop in waterdrops:}}
+									</thead>
+									<tbody>
+										<tr>
+											<td>{{=A(waterdrop.name,_href=URL('profile','index',args = waterdrop.id),_target="_blank")}}</td>
+											<td>{{= db(db.basins.waterdrop == waterdrop.id).count()}}</td>
+											<td>{{= db(db.stations.waterdrop == waterdrop.id).count()}}</td>
+											<td>{{= db(db.sensors.waterdrop == waterdrop.id).count()}}</td>											
+											<td>{{=waterdrop.created_on}}</td>
+
+
+										</tr>
+									{{pass}}
+									</tbody>	
+						</table>
+			</div>
+				{{else:}}
+				<div> No Waterdrops are currently in db. Please Create </div>		
+				{{pass}}
+	</div>
+</div>

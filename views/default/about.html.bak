@@ -1,0 +1,27 @@
+{{extend 'layout.html'}}
+<div class ="row">
+	<div class="span12">
+			<h4>Waterdrops: Long story sort...</h4>
+			<p> 
+				I created Waterdrops for all hydrologist who seek a simple and effective way to store / display their hydrological results.</p>
+			The main idea is Waterdrop to create a social network of Watersheds/Catchments.</p>
+			<p> I am not a computer scientist or web developer geek ... All Waterdrop source code created with hard work in after hours by realizing "request" and "response"  meaning ...</p>
+			<p>All code is built using Python 2.7 (web2py framework , folium library for map display, pandas for time series analysis, mpld3 library for plots).</p><br>
+			<p> Ty for visiting <br> <a href="http://fuzzyelements.com">Anastasiadis Stavros</a></p>
+	<hr>
+</div>
+	<div class="span12">
+		<h4> Further Development Steps </h4>
+			<ul>
+				<li>Front end development: make tables responsive </li>
+                <li>Front end development: add Boorstrap latest version or Foundation </li>
+				<li>Add more TimeSeries Analysis Features like missing values </li>
+				<li>Add Monthly Water Balance model for Main Catchments using Waterdrops stations</li>
+				<li>Add mpld3 libary for interactive plots</li>
+			</ul>
+        <hr>
+    </div>
+	<div class="span12">
+		<h4> Git  repository :<a href="https://github.com/kickapoo/waterdrops" target = "_blank"> Waterdrops</a></h4>
+	</div>
+</div>

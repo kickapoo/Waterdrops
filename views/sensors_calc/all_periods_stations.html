@@ -1,0 +1,32 @@
+{{extend 'layout.html'}}
+<div class = "row">
+	{{if sensors:}}
+	<div class = "col-md-12	">
+		<h4> All Stations Sensors Time Periods </h4> 
+		<div class = "table responsive">
+			<table class ="table">
+				<thead>
+					<tr>
+					  <th> Station Name</th>
+					  <th> Sernor Type </th>
+					  <th> Time Span </th>
+					  <th> Starts </th>
+					  <th> Finish </th>
+					</tr>
+				</thead>
+				{{for sensor in sensors:}}
+				<tbody>
+					<tr>
+						<td>{{=sensor.station.name}}</td>
+						<td>{{=sensor.sensor_type}}</td>
+						<td>{{=sensor.time_span}}</td>
+						<td>{{=file_dates(sensor.myfile)['start']}}</td>
+						<td>{{=file_dates(sensor.myfile)['finish']}}</td>
+					</tr>
+				</tbody>
+				{{pass}}
+			</table>
+		</div>
+	</div>
+	{{pass}}
+</div>

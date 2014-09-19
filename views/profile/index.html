@@ -1,0 +1,351 @@
+{{extend 'layout.html'}}
+
+{{if waterdrop.created_by == auth.user_id:}}
+{{pass}}
+
+<div class="container">
+	<div class="row">
+<!-- Waterdrop name		 -->
+		<div class="col-md-5">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					 <div class="waterdrop_name">
+					 		<strong>{{=waterdrop.name}}</strong>
+					 </div>
+					<sub style="font-size:10px">
+						[{{=A('edit',_href=URL('profile','profile_edit',args = waterdrop.id),_target ="_blank")}}]
+						[{{=A('delete',_href=	URL('profile','profile_delete',args = waterdrop.id))}}]
+						{{pass}}					
+					</sub>
+				</div>
+<!-- Map -->
+				<div class="panel-body">
+					<sub>
+						[{{=A('Find Your WGS84 Decimal Degrees',_href="http://pos-map.appspot.com/el/coordinates10.html",_target="blank")}}]
+					</sub>
+					<div class="video-container">
+                  			<iframe src= "{{=URL('static','profile_map.html')}}"></iframe>
+	              	</div>
+<!-- Map - Legend -->
+	              	  <sub>
+						<strong>Map Starts </strong> {{=default_center}} (WGS84 Decimal Degrees) 
+						<br>
+						<strong>Basins: </strong> 
+						<font size="0.4" color="red"> Red </font> 
+						<strong>Stations :</strong> 
+						<font size="0.4" color="blue">Blue</font>		
+					 </sub>
+				</div>
+			</div>
+		</div>
+<!-- General Infomation -->
+		<div class="col-md-7">
+			<div class="panel panel-default">
+<!-- Summary Counts -->
+				<div class="panel-heading">
+					<div class="feature_title">
+						<div class="counts">
+							<strong>General Information</strong><br>
+							<p></p>
+							<span class="label label-info">{{=num_basins}}</span> <span> Catchments</span> 
+							<span class="label label-info">{{=num_stations}}</span><span>  Stations</span>
+							<span class="label label-info">{{=num_sensors}}</span> <span> Sensors </span>
+						</div>
+						<div class="user_info">
+						<sub>created on {{=waterdrop.created_on}} created by {{=waterdrop.created_by.last_name}}</sub>
+						</div>
+				   </div>
+				</div>
+<!-- Notes -->
+				<div class="panel-body"> 
+	              	<div class="notes">
+	              		<strong> Notes</strong>
+	              	    {{if waterdrop.created_by == auth.user_id:}}
+						<sup>[{{=A('edit',_href=URL('profile','profile_edit_notes',args = waterdrop.id),_target ="_blank")}}]</sup>
+						{{pass}}
+						<br><br>
+						<div class="addnotes">
+							 {{=waterdrop.notes}}
+						</div>
+	              	</div>										
+				</div>
+			</div>
+<!-- Comments -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>Latest Comments</strong>
+					<br>
+					[{{=A('View All Comments',_href=URL('profile','profile_comments',args = waterdrop.id),_target="_blank")}}]</sub>
+				</div>
+				<div class="panel-body">
+			    	{{for post in comments:}}
+							<div class="post">
+								<div class="">
+								  <em>On {{=post.created_on}} {{= post.created_by.last_name}} says:</em>
+								</div>
+								<div class="">
+							 	  {{=post.body}}
+							 	</div>
+							</div>
+							<hr>
+					{{pass}}
+					{{=form}}
+				</div>
+			</div>		
+		</div>
+</div>
+<!-- Catchments -->
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="feature_title">
+						<div class="counts">
+							<strong>Catchment Analysis</strong>
+							<p></p>
+							<span class="label label-info">{{=count_basins_mains}}</span><span> Mains </span>
+							<span class="label label-info">{{=count_basins_subs}}</span><span> Subs </span>
+<!-- All Basin Actions -->
+							<div>
+							{{if basins:}}
+							<br>						
+							[{{=A('view all basins',_href=URL('profile','view_all_basins',args = waterdrop.id),_target="_blank")}}]
+							{{pass}}
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+<!-- Add Catchment Name -->
+						<div class="col-md-4">
+							{{if waterdrop.created_by == auth.user_id:}}
+							<div class="add_data">
+								{{=form_catchment}}
+							</div>
+							{{pass}}
+						</div>
+						<div class="col-md-8">
+							<hr>
+							<div class="table-responsive">	
+<!-- Basin Table -->
+								<table class="table">
+									    <thead>
+									        <tr>
+									            <th>Type</th>
+									            <th>Name</th>
+									            <th>Geo-morfological data</th>
+									            <th>Analysis</th>
+									            <th></th>
+									        </tr>
+									    </thead>
+										{{for basin in basins:}}
+									    {{if basin.basin_type =="Main":}}
+										{{myclass ="success"}}
+										{{pass}}
+										{{if basin.basin_type =="Sub":	}}
+										{{myclass = "warning"}}
+										{{pass}}
+									    <tbody>
+									        <tr>
+									            <td><span class="label label-{{=myclass}}"> {{=basin.basin_type}}</span></td>									        	
+									            <td>{{=basin.name}}</td>
+									            <td><sup>
+													<strong>Area: </strong>{{= basin.area}} km<sup>2</sup><br>
+													<strong>Perimeter: </strong> {{=basin.perimeter}} km <br>
+													<strong>River Lenght: </strong> {{=basin.river_lenght}} km
+												    </sup></td>
+									            <td><sup>
+													[{{=A('Qmax = F(area)',_href=URL('basin_calcs','qmax',args = basin.id))}}]
+													<br>[{{=A('Shape Indices',_href=URL('basin_calcs','indices',args = basin.id))}}]
+													<br>[{{=A('Concentration Time (Tc)',_href=URL('basin_calcs','tc',args = basin.id))}}]
+													[{{=A('Snyder Unit Hydrograph',_href=URL('basin_calcs','snyder_calc',args = basin.id),_target="_blank")}}]
+													<sup></td>
+												<td>
+													 <sup>
+													[{{=A('view',_href=URL('profile','view_basin',args = basin.id))}}] 
+													{{if waterdrop.created_by == auth.user_id:}}
+													[{{=A('edit',_href=URL('profile','edit_basin',args = basin.id),_target ="_blank")}}]													 	
+													<br>[{{=A('delete',_href=URL('profile','delete_basin',args = basin.id))}}]
+													{{pass}}</sup><td>
+									        </tr>
+									    </tbody>
+										{{pass}}
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!-- Stations -->
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="feature_title">
+						<div class="counts">
+<!-- Count All Stations -->
+							<strong>Timeseries Analysis</strong><br><br>
+							<span class="label label-info">{{=count_stations_totals}}</span><span> Stations </span>	
+							{{labels =['info','info','info','info','info','info']}}
+								{{for meteo_var,count_var,label in zip(meteo_vars,count_vars,labels):}}
+								     <span class="label label-{{=label}}">{{=count_var}}</span><span> {{= meteo_var}} </span>
+								{{pass}}
+							<br><br>
+<!-- All Stations & Sensors Actions -->
+							{{if stations:}}
+							[{{=A('Stations Information',_href=URL('profile','view_all_stations',args = waterdrop.id),_target="_blank")}}]
+							{{pass}}
+							{{sensors = db(db.sensors.waterdrop == waterdrop.id).select()}}
+							{{if sensors:}}
+							[{{=A('Sensors Records Time-Periods',_href=URL('sensors_calc','all_periods_stations',args = waterdrop.id))}}]
+							[{{=A('Sensors File Download [extra]',_href=URL('profile','view_all_sensors',args = waterdrop.id),_target="_blank")}}]
+							[{{=A('Sensor Type Time-Periods',_href=URL('sensors_calc','all_periods_sensors',args = waterdrop.id))}}]
+							{{pass}}
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-4">
+						{{if waterdrop.created_by == auth.user_id:}}
+							<div class="add_data">
+								{{=form_stations}}
+							</div>
+						{{pass}}
+						</div>
+						<div class="col-md-8">
+<!-- Here alsos -->
+							<div class="table-responsive">	
+<!-- Stations Table -->
+								<table class="table">
+									    <thead>
+									        <tr>
+									            <th>Type</th>
+									            <th>Station Name</th>
+									            <th>Sensor Analysis</th>
+									            <th>Analysis</th>
+									            <th></th>
+									        </tr>
+									    </thead>
+									{{for station in stations:}}
+									    <tbody>
+									        <tr>
+
+									     		<td> 
+									     			{{if station.station_type == "Meteorological":}}
+													 <span class="label label-info">{{=station.station_type}}</span>
+													{{pass}}
+													{{if station.station_type == "Stage - Hydrometric":}}
+													 <span class="label label-success">{{=station.station_type}}</span>
+													{{pass}}
+													{{if station.station_type == "Both":}}
+													 <span class="label label-warning">{{=station.station_type}}</span>
+													{{pass}}
+													{{if station.station_type == "Something Else...":}}
+													 <span class="label label-important">{{=station.station_type}}</span>
+													{{pass}}
+									     		</td>
+									     		<td>{{=station.name}}</td>
+									     		{{sensors = db(db.sensors.station == station.id).select()}}
+									     		<td>
+													{{for sensor in sensors:}}
+									     			<strong>{{=sensor.sensor_type}}</strong> ({{=sensor.time_span}})
+									     			<div style="font-size:10px;">
+													[{{=A('Stats & Plots',_href=URL('sensors_calc','basic_stats',args = sensor.id))}}] 
+													[{{=A('Over Threshold',_href=URL('sensors_calc','over_threshold',args = sensor.id))}}]
+													[{{=A('Events',_href=URL('sensors_calc','events',args = sensor.id))}}]
+													</div>
+													<p></p>
+												    {{pass}}
+													</td>
+									     		<td>
+									     			<div style="font-size:10px;">
+									     			[{{=A('view',_href=URL('profile','view_station',args = station.id))}}]
+									     			</div>
+									     			{{if waterdrop.created_by == auth.user_id:}}
+									     			<div style="font-size:10px;">
+													[{{=A('add sensor',_href=URL('profile','add_sensor',args = [station.id,waterdrop.id]),_target ="_blank")}}]<br>
+													[{{=A('delete station',_href=URL('profile','delete_station',args = station.id))}}]	<br>
+													[{{=A('edit station',_href=URL('profile','edit_station',args = station.id),_target ="_blank")}}]
+													{{pass}}<br>	
+													</div>
+									     		</td>
+									        </tr>
+									    </tbody>
+										{{pass}}
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!-- Models-->
+<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="feature_title">
+							<strong>Hydrological Modeling</strong>
+						</div>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-4">
+								 
+							</div>
+							<div class="col-md-8">
+								<div class="table-responsive">	
+	<!-- Models Table -->
+									<table class="table">
+										    <thead>
+										        <tr>
+										            <th>Model</th>
+										            <th></th>
+										        </tr>
+										    </thead>
+										    <tbody>
+										        <tr>
+										     		<td>Thornthwaite-Mather Water Balance</td>
+										     		<td>
+										     			<sup>[{{=A('Select Related Stations',_href=URL('water_balance','wb_data',args = waterdrop.id),_target ="_blank")}}]</sup></td>
+										        </tr>
+										    </tbody>
+									</table>
+								</div>
+							</div>
+					</div>
+				</div>
+			</div>
+		<div>
+<div>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

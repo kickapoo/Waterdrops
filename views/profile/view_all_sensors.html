@@ -1,0 +1,31 @@
+{{extend 'layout.html'}}
+
+<div class="table-responsive">
+<table class="table">
+	<thead>
+			<tr>
+			  <th> Station Name </th>
+			  <th> Sensor Type</th>
+			  <th> Time Span</th>
+			  <th> File Name or URL</th>
+			  <th> File </th>
+			</tr>
+			{{for item in sensors:}}
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{=item.station.name}}</td>
+					<td>{{=item.sensor_type}}</td>
+					<td>{{=item.time_span}}</td>
+					<td>{{=item.myfile}}
+						<td>[{{=A('download',_href=URL(r=request, c='profile', f='download', args=item.myfile))}}]
+							{{if item.created_by == auth.user_id:}}
+							[{{=A('delete',_href=URL('profile','delete_sensor',args=[item.id ,item.waterdrop]))}}]
+							{{pass}}
+							[{{=A('Stats & Plots',_href=URL('sensors_calc','basic_stats',args = item.id))}}]
+						</td>
+				</tr>
+			{{pass}}
+			</tbody>	
+</table>
+</div>

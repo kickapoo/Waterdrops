@@ -1,0 +1,21 @@
+[2014-08-29 12:35:45] START
+[2014-09-01 10:02:19] EDIT waterdrops/controllers/default.py: -2
+[2014-09-01 10:09:09] EDIT waterdrops/views/default/about.html: 0
+[2014-09-01 10:10:35] EDIT waterdrops/views/default/about.html: -1
+[2014-09-01 10:30:52] EDIT waterdrops/views/default/index.html: 5
+[2014-09-01 10:31:13] EDIT waterdrops/views/default/index.html: 0
+[2014-09-01 10:32:16] EDIT waterdrops/views/default/index.html: 0
+[2014-09-01 10:32:45] EDIT waterdrops/views/default/index.html: 0
+[2014-09-01 10:33:18] EDIT waterdrops/views/default/index.html: 2
+[2014-09-01 10:33:39] EDIT waterdrops/views/default/index.html: 0
+[2014-09-01 10:34:24] EDIT waterdrops/views/default/index.html: -1
+[2014-09-01 10:34:48] EDIT waterdrops/views/default/index.html: 0
+[2014-09-01 10:35:01] EDIT waterdrops/views/default/index.html: 0
+[2014-09-02 03:18:48] CREATE profile/add_sensor.html: 0
+[2014-09-02 03:19:14] EDIT waterdrops/views/profile/add_sensor.html: 15
+[2014-09-02 03:19:54] EDIT waterdrops/views/profile/add_sensor.html: 0
+[2014-09-02 03:20:22] EDIT waterdrops/views/profile/add_sensor.html: 1
+[2014-09-02 03:20:52] EDIT waterdrops/views/profile/add_sensor.html: -1
+[2014-09-02 03:21:06] EDIT waterdrops/views/profile/add_sensor.html: 0
+[2014-09-02 03:21:25] EDIT waterdrops/views/profile/add_sensor.html: 0
+[2014-09-02 03:21:50] EDIT waterdrops/views/profile/add_sensor.html: 0

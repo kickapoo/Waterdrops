@@ -1,0 +1,72 @@
+{{extend 'layout.html'}}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					    <strong>Station Name: </strong>{{=station_name.name}}<br>
+				</div>
+				<div class="panel-heading">
+						<strong>Sensor Type: </strong>{{=meteo_var}}<br>
+						<strong>Max Record Value: </strong>{{=max_value}}<br>
+		 				<strong>Min Record Value: </strong>{{=min_value}}
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					    <strong>Input</strong>
+				</div>
+				<div class="panel-body">
+						{{=form}}
+				</div>
+			</div>
+		</div>
+		{{if over_threshold:}}
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					 <strong>Over Threshod Results</strong>
+				</div>
+				<div class="panel-body">				
+					<div class = "span6">
+							{{=XML(plot_threshold)}}
+					</div>
+						<div class = "span6">
+							{{=XML(plot_hist_threshold)}}
+					</div>
+					<div class="table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+									  <th> Descriptive Statistics</th>
+									</tr>
+								</thead>
+								<tbody>
+									<div id ="meteo_event">
+										{{for key,value in over_threshold.iteritems():}}
+										<tr>
+										  <td>{{=key}}</td>
+										  <td>{{=value}}</td>
+										  {{pass}}
+										</tr>
+									</div>
+								</tbody>
+							</table>	
+					</div>
+				</div>
+			</div>
+		</div>
+		{{pass}}
+	</div>
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,118 @@
+{{extend 'layout.html'}}
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-12">
+          <div class="page-header">
+            <img border="1" style="float: left; margin: 0px 15px 15px 0px;" src="{{=URL(r=request,c='static/images',f='favicon.jpg')}}" alt="Waterdrops Logo Pic" width="75" height="75"> 
+            <h1>Welcome to Waterdrops <br><small>Water Resources Management System</small></h1>
+          </div>
+      </div>
+    <div class="col-md-7">
+
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <!-- Map -->
+        <div class="panel-heading">
+            <strong>Waterdrops Current Basins & Stations Database </strong>
+        </div>
+        <div class="panel-body">
+              <div style ='font-size:11px;' class="form-inline" role="form"> 
+                    {{=form}}
+              </div>
+              <hr>
+              <div class="video-container">
+                  <iframe src= "{{=URL('static','currentdb_map.html')}}"></iframe>
+              </div>
+
+              <div class="alert alert-success text-center" role ="alert">
+                    <span class ="badge">{{=num_waterdrops}}</span> Waterdrops <span class ="badge">{{=num_basins}}</span> Basins <span class ="badge">{{=num_stations}}</span> Station <span class ="badge">{{=num_sensors}}</span> Sensors 
+              </div>
+
+              <p class= "text-justify>" style="font-size:8px;">If you have problems with map display: Click here
+               <a href="https://cdn.leafletjs.com/leaflet-0.5/leaflet.css" target ="_blank">Map Certificate</a> 
+               to accepted certificate and reload Waterdrop page OR view 
+               <a href="http://www.youtube.com/embed/8_cEB6XoTC0" target ="blank">Map Display Problems video</a>. 
+               Prototype Datasets Licence : [<a href="http://www.mar.aegean.gr/isla/index.php?" target="_blank">THALIS - Research Programme ISLA</a>] [<a href="http://openmeteo.org" target="_blank">openmeteo.org </a>]
+              </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+           <strong>Description</strong>
+        </div>
+        <div class="panel-body">
+            <p class="text-justify">
+              Waterdrops is Water Resources Management System from Hydrological Modeling prospective.
+            </p>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+              <strong>Features</strong>
+        </div>
+        <div class="panel-body">
+              <p><strong>Catchment Analysis</strong>: Using basic Geo-morfological catchment data (example area,perimeter etc) Waterdrops estimates
+                Peak Discharge (Q=f(area)), Concentration Time (Tc), Catchment Shape Indices and Snyder Unit Hydrograph estimation.</p>
+              <p><strong>Hydro-meteorological Variables</strong>: Using Hydro-meteorological dataset Waterdrops provides Basic Statistical Analysis, Timeseries Plots, 
+                Aggregation Timeseries, Over Threshold Analysis and Time Variable Event Identification.</p>
+              <p><strong>Hydrological Modeling</strong>: Using Rainfall and Temperature dataset, Waterdrops estimates Monthly Water Balance Model for each Catchment</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <!-- Video Tour -->
+      <div class="col-md-6">
+<!--           <div class="panel panel-default">
+            <div class="panel-heading">
+                 <strong>Quick Tour Video</strong>
+            </div>
+            <div class="panel-body">
+                  <div class="video-container">
+                      <iframe src="https://www.youtube.com/embed/1AGClipeV14?rel=0" > </iframe>
+                  </div>
+            </div>
+          </div> -->
+      </div>
+      <!-- Contact -->
+      <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+                  <strong>Contact Information</strong>
+            </div>
+            <div class="panel-body">
+                  <a href="http://fuzzyelements.com/about-me" target="_blank">Anastasiadis Stavros</a>
+                  <em>Forester, MSc <br>
+                  <em>anastasiadis.st00 "at" gmail.com</em> <br>
+                       <div style="float: right; margin: 0px 15px 15px 0px;">
+                              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="R5WJWUCXG9GBU">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                                </form>
+                       </div>
+            </div>
+          </div>
+           <!--  <div class="panel panel-default">
+                <div class="panel-heading">
+                      <strong></strong>
+                </div>
+                 
+            </div> -->
+          </div>
+      </div>
+    </div>
+</div>

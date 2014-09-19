@@ -1,0 +1,19 @@
+{{extend 'layout.html'}}
+
+<div class="container">
+	<div class="row">
+				<div class="col-md-4">
+					{{=form}}
+				</div>
+           			<div class="col-md-6">
+					<div class="well">
+						<h5>Upload File Requirements</h5>
+						<p> Waterdrops uses Python Pandas Library for Timeseries Calculations</p>
+						<p> All calculations work for files with timespams equal or less than Daily records</p>
+						<p> The current Pandas Dataframe parcer uses: parce_dates = True, index_col = 0, header = None, sep =',', names = ['meteo']</p>
+						<p> Please check the sample file below or sent a sample dataset file to stavrosana@aegean.gr </p>
+						<h4> {{=A('sample_file',_href=URL(r=request,c='static/samples',f='sample_var.txt'), _target ="_blank")}}</h4>
+					</div>
+				</div>
+	</div>
+</div>

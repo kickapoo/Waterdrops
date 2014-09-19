@@ -1,0 +1,96 @@
+{{extend 'layout.html'}}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+<!-- Basin Name -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					 <strong> {{=name}} </strong>
+				</div>
+			</div>
+<!-- Input Data -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					 <strong> Input Data </strong>
+				</div>
+				<div class="panel-body">
+						<strong>Area: </strong> {{=A}} km<sup>2</sup><br>
+						<strong>River Lenght:</strong> {{=L}} m<br>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>Analysis Description</strong>
+				</div>
+				<div class="panel-heading">
+					 <strong> Snyder Unit Hydrograph</strong>
+				</div>
+				<div class="panel-body">
+<!-- Text  -->
+				<p class="text-justify">
+					The synthetic unit hydrograph of Snyder (1938) is based on relationships found between three characteristics of a standard unit hydrograph and descriptors of basin morphology. The hydrograph characteristics are the effective rainfall duration, tr, the peak direct runoff rate, qp, and the basin lag time, tl. From these relationships, five characteristics of a required unit hydrograph for a given effective rainfall duration may be calculated (e.g., Chow et al., 1988; Bras, 1990): the peak discharge per unit of watershed area, qpR, the basin lag, tlR, the base time, tb, and the widths, W (in time units) of the unit hydrograph at 50 and 75 percent of the peak discharge.(soon more Detailed Text)
+				</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Results -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>Results</strong>
+				</div>
+				<div class="col-md-12">
+						{{=form}}
+				</div>
+				<div class="panel-body">
+<!-- Table Results -->
+				{{if SUH:}}			
+					<div>
+						{{=XML(make_html)}}
+					</div>				
+							<div class="table responsive">
+									<table class="table">
+										<thead>
+											<tr>
+											  <th>Eff. Rainfall Duration (tR)</th>
+											  <th>Basin Time lag (Tp)</th>		
+											  <th>Peak Discharge (QPR)</th>
+											  <th>Base Time (Tb) </th>
+											  <th>Width at 50% (W50)</th>
+											  <th>Width at 75% (W75) </th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>{{=SUH['tR']}} hr	</td>
+												<td>{{= SUH['tp']}} hr	</td>
+												<td>{{= SUH['QPR']}} m<sup>3</sup>/sec	</td>
+												<td>{{= SUH['Tb']}} hr	</td>
+												<td>{{= SUH['W50']}}	</td>
+												<td>{{= SUH['W75']}}	</td>	 
+											</tr>
+										</tbody>
+									</table>
+						{{pass}}
+					</div>		
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+	
+
+

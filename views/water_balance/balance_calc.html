@@ -1,0 +1,112 @@
+{{extend 'layout.html'}}
+
+<div class="container">
+	<div class="row">
+		<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>Waterdrop Name: {{=waterdrop.name}}</strong>
+				</div>
+		</div>
+		<div class="panel panel-default">
+<!-- Model Input Head -->
+			<div class="panel-heading">
+				<strong>Model Input Data</strong>
+			</div>
+<!-- Rainfall -->
+			<div class="panel-heading">
+				<strong>Rainfall</strong>
+			</div>
+			<div class="panel-body">			
+				<div class="col-md-4">
+					{{for key,value in over_rains_stats.iteritems():}}
+					<strong>{{=key}} </strong> :{{=value}}<br>
+					{{pass}}
+				</div>
+				<div class="col-md-8">
+						{{=XML(plot_rains_month)}}
+				</div>	
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Temps -->
+<div class="container">
+	<div class="row">
+		<div class="panel panel-default">
+<!-- Temperature -->
+			<div class="panel-heading">
+				<strong>Temperature</strong>
+			</div>
+			<div class="panel-body">			
+				<div class="col-md-4">
+					{{for key,value in over_temps_stats.iteritems():}}
+					<strong>{{=key}} </strong> :{{=value}}<br>
+					{{pass}}
+				</div>
+				<div class="col-md-8">
+						{{=XML(plot_temps_month)}}
+				</div>	
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Evapotranpiration -->
+
+<div class="container">
+	<div class="row">
+		<div class="panel panel-default">
+<!-- PET -->
+			<div class="panel-heading">
+				<strong>Monthly Thornthwaite Pontential Evapotranpiration</strong>
+			</div>
+			<div class="panel-body">			
+				<div class="col-md-4">
+					{{for key,value in month_th.iteritems():}}
+					<strong>{{=key}} </strong> :{{=value}}<br>
+					{{pass}}
+				</div>
+				<div class="col-md-8">
+						{{=XML(plot_evap_month)}}
+				</div>	
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Model Results -->
+
+<div class="container">
+	<div class="row">
+		<div class="panel panel-default">
+<!-- PET -->
+			<div class="panel-heading">
+				<strong>Thornthwaite- Mather Model Results</strong>
+			</div>
+			<div class="panel-body">			
+				<div class="col-md-12">
+					{{=XML(plot_q)}} 
+				</div>
+				<div class="col-md-12">
+					{{=XML(plot_soil)}}
+				</div>	
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

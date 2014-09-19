@@ -1,0 +1,86 @@
+{{extend 'layout.html'}}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+<!-- Basin Name -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					 <strong> {{=name}} </strong>
+				</div>
+			</div>
+<!-- Input Data -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					 <strong> Input Data </strong>
+				</div>
+				<div class="panel-body">
+					<strong>Area: </strong> {{=A}} km<sup>2</sup><br>
+					<strong>River Lenght:</strong> {{=L}} m<br>
+					<strong>Hmax</strong> {{= Hmax}} m	<br>
+					<strong>Hmin</strong> {{= Hmin}} m <br>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>Analysis Description</strong>
+				</div>
+				<div class="panel-heading">
+					 <strong>Time Concentration (Tc) </strong>
+				</div>
+				<div class="panel-body">
+<!-- Text  -->
+					<p class="text-justify">
+						The concentration time tc, of the water in a watershed is defined as being the maximum of duration necessary for a water drop falling on the watershed surface to reach the outlet section of the watershed. (soon more Detailed Text)
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Results -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>Results</strong>
+				</div>
+				<div class="panel-body">
+<!-- Table Results -->
+					<div class="table-responsive">
+							<table class = "table">
+								<thead>
+									<tr>
+									  <th>Giandotti </th>
+									  <th>SCS</th>		
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+									  <td>{{= Giandotti}} hr	</td>
+									  <td>{{= SCS}} hr</td>
+									</tr>
+								</tbody>
+							</table>
+							</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

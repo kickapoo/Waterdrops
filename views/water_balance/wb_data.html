@@ -1,0 +1,66 @@
+{{extend 'layout.html'}}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+<!-- Basin Name -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>Waterdrop Name: {{=waterdrop.name}}</strong>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>Model Description</strong>
+				</div>
+				<div class="panel-heading">
+					 <strong> Thornthwaite - Mather Water Balance  (no snow)</strong>
+				</div>
+				<div class="panel-body">
+<!-- Text  -->
+						<p class="text-justify">
+							if Pn > Epn 
+							<ul>
+
+								<li>Sn = min {Sn-1 + Pn – Epn, K}</li>
+								<li>Qn = max {Sn-1 +Pn –Epn –K, 0}</li>
+							</ul>
+							if Pn <= Epn 
+							<ul>
+								<li>Sn = Sn-1 * exp(Pn –Epn /K)</li>
+								<li>Qn = 0</li>
+							</ul>
+							En = Pn – ΔSn –Qn
+		 				</p>		
+						<p class="text-justify">
+							where P is the precipitation (mm), Ep is the potential evapotranspiration (mm), S is the soil water storage (mm), Εn is the actual evapotranspiration (mm), Q is the surplus of water (mm), Qn is the surface water flow (mm).
+						</p>
+						<p class="text-justify">
+							The soil moisture capacity K corresponds to the maximum capacity of retaining soil moisture and is expressed as follows (SCS, 1972): <br>
+							K= 25.4 * [(1000/Cn) - 10]
+						</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>Select Related Stations </strong>
+				</div>
+				<div class="panel-body">
+					{{=form}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

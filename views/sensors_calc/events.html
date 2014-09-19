@@ -1,0 +1,122 @@
+{{extend 'layout.html'}}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+<!-- Basin Name -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					  <strong>Station Name: </strong>{{=station_name.name}}<br>
+		 				<strong>Sensor Type: </strong>{{=meteo_var}}<br>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>Analysis Description</strong>
+				</div>
+				<div class="panel-heading">
+					 <strong> Event Identification</strong>
+				</div>
+				<div class="panel-body">
+<!-- Text  -->
+				<p class="text-justify">
+					An <strong>event</strong> is defined as follows:<br>
+					Assume a timeseries Y<sub>(t)</sub>{t:1,2 ... n}. After selecting a threshold (u), a subset of the Y<sub>(t)</sub> is created X<sub>(t)</sub>{t:1,2,..n | x<sub>t</sub> > u}. An <strong>event</strong> is defined as the consecutive timesteps for x<sub>(t)</sub> > u and time difference of two consecutive timesteps is bigger than a selected timespam (m) in minutes.
+					For example in a Rainfall 10 mins timeseries. If you set Threshold 3 and TimeSpam 180 min it means that  in total Duration (between Start - Finish Event) there are records with values > 3 that even between two continuous records with > 3 values the time interval between them is less than 180  mins (3 hrs).
+ 				</p>		
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Results -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>Results</strong>
+				</div>
+				<div class="col-md-12">
+						{{=form}}
+				</div>
+				{{if a == 2:}}
+				<div class="panel-body">
+<!-- Table Results -->
+					<div class="table-responsive">
+							<table class="table">
+									<thead>
+										<tr>
+										  <th> Event Id</th>
+										  <th> Duration</th>
+										  <th> Start</th>
+										  <th> Finish</th>
+										  <th> Min</th>
+										  <th> Max</th>
+										  <th> Mean </th>
+										  <th> Sum</th>
+										  <th> <th>
+										</tr>
+									</thead>
+									{{for index, row in df1.iterrows():}}
+									<tbody>
+										<tr>
+										<td>{{=index}} </td>
+										<td>{{=row['finish'] - row['start']}} </td>						
+										<td>{{=row['start']}} </td>
+										<td>{{=row['finish']}} </td>
+										<td>{{=row['min']}} </td>
+										<td>{{=row['max']}} </td>
+										<td>{{=row['mean']}} </td>
+										<td>{{=row['sum']}} </td>
+										<td> 
+											<!-- {{=A('view',_href = URL('sensors_calc','view_event',vars = {'start':df1['start'][index],'finish':df1['finish'][index], 'station_id': sensor_id}))}}
+											{{ = df1['start'][index]}} -->
+												<!-- Jquery  -->
+				<!-- 								{{event = df.meteo[df1['start'][index]:df1['finish'][index]]}}
+												{{event = event.to_dict()}}
+
+												{{for key,item in event.iteritems():}}
+
+												 	{{=key}} {{=item}}<br>
+												{{pass}} -->
+										</td>
+										{{pass}}
+										</tr>
+									</tbody>
+								</table>
+					</div>
+				</div>
+				{{pass}}		
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

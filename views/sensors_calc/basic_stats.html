@@ -1,0 +1,137 @@
+{{extend 'layout.html'}}
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					    <strong>Station Name: </strong>{{=station_name.name}}<br>
+				</div>
+				<div class="panel-heading">
+						<strong>Sensor Type: </strong>{{=meteo_var}}
+				</div>
+			</div>
+		</div>
+<!-- Daily Aggregations -->
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>Daily Aggregation</strong>
+				</div>
+				<div class="panel-body">
+						<div class="col-md-12">
+							{{=XML(plot_daily)}}	
+						</div>
+						<div class="col-md-6">
+							<div class="table-responsive">
+								<table class="table">
+										<thead>
+											<tr>
+											  <th> Descriptive Statistics </th>
+											  <th> Daily Aggregation</th>
+											</tr>
+										</thead>
+										<tbody>
+											{{for key,value in raw_stats.iteritems():}}
+											<tr>
+											  <td>{{=key}}</td>
+											  <td>{{=value}}</td>
+											  {{pass}}
+											</tr>
+										</tbody>
+								</table>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+<!-- Monthly Aggregation -->
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>Monthly Aggregation</strong>
+				</div>
+				<div class="panel-body">
+						<div class="col-md-12">
+							{{=XML(plot_month)}}	
+						</div>
+						<div class="col-md-6">
+							<div class="table-responsive">
+									<table class="table">
+										<thead>
+											<tr>
+											  <th> Descriptive Statistics </th>
+											  <th> Monthly Sample</th>
+											</tr>
+										</thead>
+										<tbody>
+											{{for key,value in month_stats.iteritems():}}
+											<tr>
+											  <td>{{=key}}</td>
+											  <td>{{=value}}</td>
+											  {{pass}}
+											</tr>
+										</tbody>
+								    </table>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+<!-- Annual Aggreegation -->
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<strong>Annual Aggregation</strong>
+				</div>
+				<div class="panel-body">
+						<div class="col-md-12">
+							{{=XML(plot_annual)}}	
+						</div>
+						<div class="col-md-6">
+							<div class="table-responsive">
+								<table>
+									<thead>
+										<tr>
+										  <th> Descriptive Statistics</th>
+										  <th> Annual Aggregation </th>
+										</tr>
+									</thead>
+									<tbody>
+										{{for key,value in annual_stats.iteritems():}}
+										<tr>
+										  <td>{{=key}}</td>
+										  <td>{{=value}}</td>
+										  {{pass}}
+										</tr>
+									</tbody>
+							    </table>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+<!-- Close -->
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

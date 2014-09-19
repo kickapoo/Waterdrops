@@ -1,0 +1,63 @@
+{{extend 'layout.html'}}
+
+<div class="table-responsive">	
+<table class ="table">
+	<thead>
+			<tr>
+			  <th> Name </th>
+			  <th> Area (km<sup>2</sup>)</th>		
+			  <th> Basin Type</th>
+			  <th> Hmax (m)</th>
+			  <th> Hmin (m)</th>
+			  <th> River Name</th>
+			  <th> Perimeter (km)</th>
+			  <th> River Lenght (km)</th>
+			  <th> Lat (WGS84 dd)</th>
+			  <th> Log (WGS84 dd)</th>
+			</tr>
+			{{for item in basins:}}
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{=item.name}}</td>
+					<td>{{=item.area}}</td>
+					<td>{{=item.basin_type}}</td>
+					<td>{{=item.hmax}}</td>
+					<td>{{=item.hmin}}</td>
+					<td>{{=item.river_name}}</td>
+					<td>{{=item.perimeter}}</td>
+					<td>{{=item.river_lenght}}</td>
+					<td>{{=item.lat}}</td>
+					<td>{{=item.lon}}</td>
+				</tr>
+			{{pass}}
+			</tbody>	
+</table>
+</div>
+<div class="container">
+	<div class="row">
+			<div class="panel-body">
+					<sub>
+						[{{=A('Find Your WGS84 Decimal Degrees',_href="http://pos-map.appspot.com/el/coordinates10.html",_target="blank")}}]
+					</sub>
+					<div class="video-container">
+                  			<iframe src= "{{=URL('static','profile_map.html')}}"></iframe>
+	              	</div>
+<!-- Map - Legend -->
+	              	  <sub>
+						<strong>Map Starts </strong> {{=default_center}} (WGS84 Decimal Degrees) 
+						<br>
+						<strong>Basins: </strong> 
+						<font size="0.4" color="red"> Red </font> 
+						<strong>Stations :</strong> 
+						<font size="0.4" color="blue">Blue</font>		
+					 </sub>
+				</div>
+			</div>
+	</div>
+</div>
+
+
+
+
+
