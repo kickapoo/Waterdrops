@@ -2,8 +2,8 @@
 Waterdrops
 ==========
 
-Waterdrops is a Water Resources Management system for Hydrological purposes
-.
+Waterdrops is a Water Resources Management system for Hydrological purposes.
+
 Copyright (C) 2013-2014 University of Aegean, Research Program ISLA
 Waterdrop is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License, as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
 
